@@ -403,15 +403,15 @@ a{color:inherit}
 .w-body{display:grid;gap:10px}
 .w-head,.w-body{position:relative;z-index:1}
 .w-card.feature .big{
-  position:absolute;bottom:-.2em;right:.04em;z-index:0;pointer-events:none;
-  font:900 clamp(150px,12vw,200px)/1 var(--f-display);font-stretch:72%;
+  position:absolute;top:-.1em;right:.03em;z-index:0;pointer-events:none;
+  font:900 clamp(210px,17vw,270px)/1 var(--f-display);font-stretch:72%;
   color:transparent;-webkit-text-stroke:2px var(--red);
-  background:linear-gradient(0deg,rgba(166,27,27,.4),rgba(166,27,27,0) 80%);-webkit-background-clip:text;background-clip:text;
+  background:linear-gradient(180deg,rgba(166,27,27,.45),rgba(166,27,27,0) 85%);-webkit-background-clip:text;background-clip:text;
   transition:transform .5s cubic-bezier(.2,.8,.2,1);
 }
 .w-card.feature:hover .big{transform:translateY(8px) rotate(-3deg)}
 .w-card.feature .w-ic{display:none}
-.w-card.feature{align-content:start;gap:14px}
+.w-card.feature{align-content:end;gap:14px}
 .w-card h3{font:800 clamp(22px,2.2vw,28px)/1.02 var(--f-display);font-stretch:80%;text-transform:uppercase;margin:0;letter-spacing:-.01em;text-wrap:balance}
 .w-card p{margin:0;color:var(--s-muted);max-width:44ch}
 .w-card.feature{background:var(--ink);border-color:var(--ink);color:#F4F1EF}
