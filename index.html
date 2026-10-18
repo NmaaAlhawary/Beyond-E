@@ -90,16 +90,6 @@ a{color:inherit}
   --s-card:var(--stone-card);--s-line:var(--stone-line);
   color-scheme:light;
 }
-.panel.grid-bg{
-  background-image:
-    linear-gradient(var(--s-line) 1px,transparent 1px),
-    linear-gradient(90deg,var(--s-line) 1px,transparent 1px);
-  background-size:56px 56px;background-position:center -1px;
-}
-.panel.grid-bg::before{ /* fade the grid toward the edges */
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 80% 70% at 50% 40%,transparent 0,var(--s-bg) 85%);
-}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative}
 
 /* ---------- type ---------- */
@@ -204,7 +194,7 @@ a{color:inherit}
 .hm-bar i{width:9px;height:9px;border-radius:50%;background:#D3D4DA}
 .hm-bar i:first-child{background:var(--m-red)}
 .hm-bar span{margin-left:8px;font:500 11px/1 "Inter",sans-serif;color:var(--m-muted)}
-.hm-nav{display:flex;align-items:center;gap:14px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--m-line)}
+.hm-nav{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--m-line)}
 .hm-nav img{height:20px;width:auto}
 .hm-nav b{font:700 13px/1 "Poppins",sans-serif;padding-left:12px;border-left:1px solid var(--m-line)}
 .hm-pill{font:600 11.5px/1 "Inter",sans-serif;color:var(--m-muted);padding:7px 10px;border-radius:999px;white-space:nowrap}
@@ -247,6 +237,48 @@ a{color:inherit}
 .caret{display:inline-block;width:6px;height:11px;background:var(--m-red);vertical-align:-1px;animation:blink 1s steps(2) infinite}
 @keyframes sheen{60%,100%{transform:translateX(100%)}}
 @keyframes bob{50%{transform:translateY(-8px)}}
+.mock{padding-left:clamp(56px,9vw,120px)}
+.phone{
+  position:absolute;z-index:5;left:0;bottom:6px;width:clamp(138px,12.5vw,186px);aspect-ratio:9/19;
+  border-radius:clamp(24px,2.4vw,32px);background:#0D0D0F;padding:7px;
+  box-shadow:0 40px 70px -24px rgba(0,0,0,.9),0 0 0 1.5px #2C2B30,inset 0 0 0 1px #3A393F;
+  animation:fbob 6s ease-in-out infinite -2s;
+}
+.ph-screen{position:relative;height:100%;border-radius:clamp(18px,1.9vw,26px);overflow:hidden;background:#F5F5F7;color:#16181D;
+  font-family:"Inter","IBM Plex Sans",system-ui,sans-serif;display:flex;flex-direction:column}
+.ph-island{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:34%;height:12px;border-radius:9px;background:#0D0D0F;z-index:2}
+.ph-status{display:flex;justify-content:space-between;padding:7px 12px 0;font:700 8px/1 "Inter",sans-serif}
+.ph-head{display:flex;align-items:center;justify-content:space-between;padding:12px 10px 8px;background:#fff;border-bottom:1px solid #E7E8EC}
+.ph-head img{height:12px;width:auto}
+.ph-head b{font:700 9px/1 "Poppins",sans-serif;margin-left:5px}
+.ph-head .bell{width:18px;height:18px;border-radius:50%;border:1px solid #E7E8EC;display:grid;place-items:center;position:relative}
+.ph-head .bell svg{width:9px;height:9px;color:#6B7180}
+.ph-head .bell::after{content:"";position:absolute;top:1px;right:2px;width:5px;height:5px;border-radius:50%;background:#E8343F}
+.notif{margin:8px 7px 4px;padding:8px;border-radius:12px;background:rgba(255,255,255,.96);border:1px solid #E7E8EC;
+  box-shadow:0 10px 20px -10px rgba(22,24,29,.35);display:flex;gap:7px;align-items:flex-start}
+.notif.pop{animation:drop .6s cubic-bezier(.2,1.4,.4,1)}
+.notif .ni{flex:none;width:20px;height:20px;border-radius:6px;background:#E8343F;color:#fff;display:grid;place-items:center}
+.notif .ni svg{width:11px;height:11px}
+.notif p{margin:0;font:700 8.5px/1.25 "Inter",sans-serif;min-width:0}
+.notif p small{display:block;font:500 7.5px/1.35 var(--f-mono);color:#6B7180;overflow-wrap:anywhere}
+.ph-card{margin:4px 7px;padding:9px;border-radius:11px;color:#fff;display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(120deg,#A31621,#E8343F 75%)}
+.ph-card span{font:500 7px/1.2 "Inter",sans-serif;opacity:.95}
+.ph-card span b{display:block;font:700 10px/1.2 "Poppins",sans-serif}
+.ph-ring{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#fff 68%,rgba(255,255,255,.25) 0);opacity:1!important}
+.ph-ring::before{content:"";grid-area:1/1;width:26px;height:26px;border-radius:50%;background:#C8202B}
+.ph-ring b{grid-area:1/1;position:relative;font:700 8px/1 "Poppins",sans-serif}
+.ph-row:nth-of-type(3) i{background:#EFECFB}
+.ph-sec{padding:6px 10px 2px;font:700 9px/1 "Poppins",sans-serif}
+.ph-row{margin:4px 7px;padding:7px;border-radius:9px;background:#fff;border:1px solid #E7E8EC;display:flex;gap:6px;align-items:center}
+.ph-row i{flex:none;width:16px;height:16px;border-radius:5px;background:#FDECED}
+.ph-row:nth-of-type(2) i{background:#E8F0FE}
+.ph-row span{font:600 7.5px/1.3 "Inter",sans-serif;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-row span small{display:block;font-weight:500;color:#6B7180}
+.ph-tabs{margin-top:auto;display:flex;justify-content:space-around;padding:8px 6px 12px;background:#fff;border-top:1px solid #E7E8EC}
+.ph-tabs i{width:16px;height:4px;border-radius:3px;background:#D3D4DA}
+.ph-tabs i:first-child{background:#E8343F;width:20px}
+@keyframes drop{from{transform:translateY(-130%);opacity:0}to{transform:none;opacity:1}}
 .hm-back{position:absolute;z-index:0;left:7%;right:-4%;top:12px;bottom:70px;border-radius:18px;
   background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.1);
   transform:rotate(4deg);animation:bob 7s ease-in-out infinite -1.5s}
@@ -560,6 +592,8 @@ footer .wrap{display:grid;gap:22px}
   .tl li.now .card::after{background:var(--red)}
 }
 @media (max-width:420px){
+  .phone{width:118px}
+  .mock{padding-left:64px}
   .hero-h{font-size:clamp(36px,11vw,46px)}
   .float.toast{left:0}
   .float.badge{right:0}
@@ -637,12 +671,11 @@ footer .wrap{display:grid;gap:22px}
 
       <div class="mock" aria-hidden="true">
         <div class="float badge"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg></span><div><b>10 teams</b><small>3 days to build</small></div></div>
-        <div class="hm-back" aria-hidden="true"></div>
         <div class="hm">
           <div class="hm-bar"><i></i><i></i><i></i><span>HTU eLearning · Dashboard</span></div>
           <div class="hm-nav">
             <img src="assets/htu-wordmark.png" alt="HTU"><b>eLearning</b>
-            <span class="hm-pill on">Dashboard</span><span class="hm-pill">My courses</span>
+            <span class="hm-pill on">Dashboard</span>
             <span class="sp"></span>
             <span class="hm-tools"><span class="hm-tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span><span class="hm-tool dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg></span><span class="hm-av">YT</span></span>
           </div>
@@ -664,8 +697,21 @@ footer .wrap{display:grid;gap:22px}
             </div>
           </div>
         </div>
+        <div class="phone" aria-hidden="true">
+          <div class="ph-screen">
+            <span class="ph-island"></span>
+            <div class="ph-status"><span>9:41</span><span>5G ▮</span></div>
+            <div class="ph-head"><span style="display:flex;align-items:center"><img src="assets/htu-wordmark.png" alt=""><b>eLearning</b></span><span class="bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg></span></div>
+            <div class="notif" id="toast"><span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><p>New feature is live<small id="toast-name">local_yourteam · v1.0</small></p></div>
+            <div class="ph-card"><span>Week 6<b>Good morning</b></span><span class="ph-ring"><b>68%</b></span></div>
+            <div class="ph-sec">Today</div>
+            <div class="ph-row"><i></i><span>Lab report 3<small>EM-210 · due Thu</small></span></div>
+            <div class="ph-row"><i></i><span>Quiz 4<small>CS-201 · 2 PM</small></span></div>
+            <div class="ph-row"><i></i><span>Lecture 9 recording<small>EM-210 · new</small></span></div>
+            <div class="ph-tabs"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
         <div class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#16181D" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <div class="float toast" id="toast"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><b>Plugin installed</b><small id="toast-name">local_yourteam · v1.0</small></div></div>
       </div>
     </div>
 
