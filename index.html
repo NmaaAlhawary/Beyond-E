@@ -306,24 +306,26 @@ a{color:inherit}
 .poster::before{content:"";position:absolute;right:-10%;top:10%;width:70%;height:80%;z-index:-1;
   background:radial-gradient(circle,rgba(166,27,27,.35),rgba(166,27,27,0) 65%);filter:blur(10px)}
 .pr{display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding-bottom:clamp(6px,1vw,12px);border-bottom:1px solid var(--line)}
-.pr:nth-child(2){margin-left:14%}
-.pr:nth-child(3){margin-left:28%}
-.pn{flex:none;min-width:1.1em;font:900 clamp(96px,11vw,176px)/.8 var(--f-display);font-stretch:72%;letter-spacing:-.03em;
+.ptop{font:500 12px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+.pcount{display:grid;gap:clamp(4px,.8vw,10px)}
+.pr:nth-child(2){margin-left:10%}
+.pr:nth-child(3){margin-left:20%}
+.pr:nth-child(4){margin-left:30%}
+.pn{flex:none;min-width:1.25em;font-variant-numeric:tabular-nums;font:900 clamp(72px,7.6vw,124px)/.82 var(--f-display);font-stretch:72%;letter-spacing:-.03em;
   color:transparent;-webkit-text-stroke:2px var(--red);
   background:linear-gradient(180deg,rgba(166,27,27,.45),rgba(166,27,27,0) 85%);-webkit-background-clip:text;background-clip:text;
   transition:color .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
-.pr.on .pn{color:var(--red);transform:translateX(6px)}
+.pr.on .pn{color:var(--red)}
+.pn.tick{animation:tick .35s cubic-bezier(.2,1.6,.4,1)}
+@keyframes tick{from{transform:scale(.92)}to{transform:none}}
 .pl{display:grid;gap:6px;min-width:0}
 .pl b{font:700 clamp(13px,1.2vw,16px)/1 var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--fg)}
 .pl small{font-size:14px;line-height:1.4;color:var(--grey)}
 .pr.on .pl b{color:var(--red)}
-.pcd{margin-left:28%;margin-top:clamp(8px,1.2vw,16px);display:grid;gap:10px}
-.pcd-l{font:500 11.5px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
-.pcd .countdown{margin-top:0;flex-wrap:nowrap;gap:8px}
-.pcd .cd{flex:1;min-width:0;padding:12px 6px 10px}
-.pcd .cd-sep{display:none}
-.pfoot{display:flex;align-items:center;gap:14px;margin-top:clamp(10px,1.6vw,20px);margin-left:28%;font:500 11.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-2)}
+.pfoot{display:flex;align-items:center;gap:14px;margin-top:clamp(10px,1.6vw,20px);margin-left:30%;font:500 11.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-2)}
 .pfoot img{height:22px;width:auto}
+.pfoot b{color:var(--fg);font-weight:500}
+.poster .cd-closed{margin-top:8px}
 /* floating cards around the mock */
 .float{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:14px;
   background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -391,8 +393,8 @@ a{color:inherit}
 .tl .when{position:absolute;top:16px;right:16px;display:grid;justify-items:end;gap:5px;text-align:right}
 .tl .when b{font:850 clamp(36px,3.2vw,48px)/.88 var(--f-display);font-stretch:72%;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .tl .when span{font:500 11.5px/1.2 var(--f-mono);letter-spacing:.12em;white-space:nowrap;color:var(--grey);text-transform:uppercase}
-.tl h3{font:700 clamp(14px,1.1vw,15px)/1.25 var(--f-display);font-stretch:92%;margin:0;text-wrap:balance;order:-1;padding-right:92px;min-height:58px}
-.tl p{margin:0;color:var(--grey);font-size:13px;line-height:1.5}
+.tl h3{font:700 clamp(15px,1.3vw,17px)/1.25 var(--f-display);font-stretch:92%;margin:0;text-wrap:balance;order:-1;padding-right:92px;min-height:58px}
+.tl p{margin:0;color:var(--grey);font-size:14px;line-height:1.5}
 .tl li.done .when b,.tl li.done h3{color:var(--grey)}
 .tl li.now .dot{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important;animation:ring 2s infinite}
 .tl li.now .card{border-color:var(--red);background:linear-gradient(160deg,rgba(166,27,27,.22),var(--char-2) 60%)}
@@ -615,8 +617,9 @@ footer .wrap{display:grid;gap:22px}
   .tl li.now .card::after{background:var(--red)}
 }
 @media (max-width:420px){
-  .pr:nth-child(2){margin-left:8%}
-  .pr:nth-child(3),.pfoot,.pcd{margin-left:16%}
+  .pr:nth-child(2){margin-left:6%}
+  .pr:nth-child(3){margin-left:12%}
+  .pr:nth-child(4),.pfoot{margin-left:18%}
   .hero-h{font-size:clamp(36px,11vw,46px)}
   .float.toast{left:0}
   .float.badge{right:0}
@@ -687,19 +690,15 @@ footer .wrap{display:grid;gap:22px}
 
       <div class="mock" aria-hidden="true">
         <div class="poster">
-          <div class="pr on"><span class="pn">10</span><span class="pl"><b>Teams</b><small>Selected from all applications</small></span></div>
-          <div class="pr"><span class="pn">3</span><span class="pl"><b>Days</b><small>Of building, with mentors</small></span></div>
-          <div class="pr"><span class="pn">1</span><span class="pl"><b>Townhall</b><small>Where your work is recognized</small></span></div>
-          <div class="pcd"><span class="pcd-l">Applications close in</span>
-            <div class="countdown" id="countdown" role="timer" aria-live="off" aria-label="Time left to apply">
-              <div class="cd"><b data-cd="d">--</b><span>Days</span></div><span class="cd-sep" aria-hidden="true">:</span>
-              <div class="cd"><b data-cd="h">--</b><span>Hours</span></div><span class="cd-sep" aria-hidden="true">:</span>
-              <div class="cd"><b data-cd="m">--</b><span>Min</span></div><span class="cd-sep" aria-hidden="true">:</span>
-              <div class="cd"><b data-cd="s">--</b><span>Sec</span></div>
-            </div>
-            <p class="cd-closed" id="cd-closed" hidden>Applications are now closed.</p>
+          <span class="ptop">Applications close in</span>
+          <div class="pcount" id="countdown" role="timer" aria-live="off" aria-label="Time left to apply">
+            <div class="pr"><span class="pn" data-cd="d">--</span><span class="pl"><b>Days</b><small>Until applications close</small></span></div>
+            <div class="pr"><span class="pn" data-cd="h">--</span><span class="pl"><b>Hours</b></span></div>
+            <div class="pr"><span class="pn" data-cd="m">--</span><span class="pl"><b>Minutes</b></span></div>
+            <div class="pr on"><span class="pn" data-cd="s">--</span><span class="pl"><b>Seconds</b></span></div>
           </div>
-          <div class="pfoot"><img src="assets/htu-wordmark.png" alt="HTU"><span>Beyond E. Hackathon · Moodle</span></div>
+          <p class="cd-closed" id="cd-closed" hidden>Applications are now closed.</p>
+          <div class="pfoot"><img src="assets/htu-wordmark.png" alt="HTU"><span>Deadline · <b data-deadline>[DATE]</b></span></div>
         </div>
       </div>
     </div>
@@ -994,12 +993,6 @@ const CONFIG = {
   else { addEventListener("scroll", stepProgress, { passive: true }); addEventListener("resize", stepProgress); stepProgress(); }
 
 
-  // Poster: one number at a time fills in
-  const rows = [...document.querySelectorAll(".poster .pr")];
-  if(!reduce && rows.length){
-    let r = 0;
-    setInterval(() => { rows[r].classList.remove("on"); r = (r + 1) % rows.length; rows[r].classList.add("on"); }, 2200);
-  }
 
   // White / dark theme toggle
   const root = document.documentElement, tbtn = document.getElementById("theme-btn");
@@ -1028,6 +1021,7 @@ const CONFIG = {
     put(cd.h, pad(Math.floor(t/3600)));  t %= 3600;
     put(cd.m, pad(Math.floor(t/60)));
     put(cd.s, pad(t%60));
+    cd.s.forEach(e => { e.classList.remove("tick"); void e.offsetWidth; e.classList.add("tick"); });
     setTimeout(tick, 1000 - (Date.now()%1000));
   }
   tick();
