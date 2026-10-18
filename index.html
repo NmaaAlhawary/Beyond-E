@@ -60,6 +60,7 @@
   color-scheme:dark;
 }
 /* White theme: dark panels turn white, light panels turn warm grey. Red stays the accent. */
+:root[data-theme="light"] .ft:not(.red) b{background:linear-gradient(180deg,#FFFFFF 0 50%,#F3F0EF 50% 100%);color:#171414}
 :root[data-theme="light"]{
   --page:#E4E0DE;--char:#FFFFFF;--char-2:#F5F3F2;--line:#E2DCDA;
   --fg:#171414;--grey:#5F5857;--grey-2:#8B8382;
@@ -301,31 +302,38 @@ a{color:inherit}
 .cursor::after{content:"";position:absolute;left:-8px;top:-8px;width:20px;height:20px;border-radius:50%;border:2px solid var(--m-red,#E8343F);opacity:0;animation:click 6s infinite}
 @keyframes glide{0%,12%{left:62%;top:30%}45%,70%{left:15%;top:82%}92%,100%{left:62%;top:30%}}
 @keyframes click{0%,48%{opacity:0;transform:scale(.4)}52%{opacity:1;transform:scale(1)}62%,100%{opacity:0;transform:scale(1.6)}}
-/* typographic poster */
-.poster{display:grid;gap:clamp(6px,1vw,12px);position:relative}
-.poster::before{content:"";position:absolute;right:-10%;top:10%;width:70%;height:80%;z-index:-1;
-  background:radial-gradient(circle,rgba(166,27,27,.35),rgba(166,27,27,0) 65%);filter:blur(10px)}
-.pr{display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding-bottom:clamp(6px,1vw,12px);border-bottom:1px solid var(--line)}
-.ptop{font:500 12px/1 var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
-.pcount{display:grid;gap:clamp(4px,.8vw,10px)}
-.pr:nth-child(2){margin-left:10%}
-.pr:nth-child(3){margin-left:20%}
-.pr:nth-child(4){margin-left:30%}
-.pn{flex:none;min-width:1.25em;font-variant-numeric:tabular-nums;font:900 clamp(72px,7.6vw,124px)/.82 var(--f-display);font-stretch:72%;letter-spacing:-.03em;
-  color:transparent;-webkit-text-stroke:2px var(--red);
-  background:linear-gradient(180deg,rgba(166,27,27,.45),rgba(166,27,27,0) 85%);-webkit-background-clip:text;background-clip:text;
-  transition:color .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
-.pr.on .pn{color:var(--red)}
-.pn.tick{animation:tick .35s cubic-bezier(.2,1.6,.4,1)}
-@keyframes tick{from{transform:scale(.92)}to{transform:none}}
-.pl{display:grid;gap:6px;min-width:0}
-.pl b{font:700 clamp(13px,1.2vw,16px)/1 var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--fg)}
-.pl small{font-size:14px;line-height:1.4;color:var(--grey)}
-.pr.on .pl b{color:var(--red)}
-.pfoot{display:flex;align-items:center;gap:14px;margin-top:clamp(10px,1.6vw,20px);margin-left:30%;font:500 11.5px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-2)}
-.pfoot img{height:22px;width:auto}
-.pfoot b{color:var(--fg);font-weight:500}
-.poster .cd-closed{margin-top:8px}
+/* countdown card */
+.cdx{position:relative;background:linear-gradient(160deg,var(--char-2),var(--char));border:1px solid var(--line);border-radius:28px;
+  padding:clamp(22px,2.6vw,34px);display:grid;gap:clamp(20px,2.4vw,28px);box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+.cdx::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(140deg,rgba(166,27,27,.8),transparent 40%,transparent 70%,rgba(166,27,27,.5));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cdx::after{content:"";position:absolute;right:-12%;top:-20%;width:70%;height:90%;z-index:-1;
+  background:radial-gradient(circle,rgba(166,27,27,.4),rgba(166,27,27,0) 65%);filter:blur(12px)}
+.cdx-top{display:flex;justify-content:space-between;align-items:center;font:500 12px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+.live{display:inline-flex;align-items:center;gap:8px;color:var(--fg);padding:7px 11px;border-radius:999px;border:1px solid var(--line);letter-spacing:.14em}
+.live i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(166,27,27,.7);animation:pulse 1.6s infinite}
+.cdx-row{display:flex;align-items:flex-start;gap:clamp(6px,.8vw,10px)}
+.ft{flex:1;min-width:0;display:grid;gap:10px;justify-items:center;perspective:400px}
+.ft b{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;
+  background:linear-gradient(180deg,#2B2727 0 50%,#211E1E 50% 100%);border:1px solid var(--line);
+  font:900 clamp(40px,4.4vw,72px)/1 var(--f-display);font-stretch:78%;font-variant-numeric:tabular-nums;color:#F4F1EF;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 14px 24px -14px rgba(0,0,0,.8)}
+.ft b::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:rgba(0,0,0,.55);box-shadow:0 1px 0 rgba(255,255,255,.05)}
+.ft span{font:500 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--grey-2)}
+.ft.red b{background:linear-gradient(180deg,#B82222 0 50%,#9C1A1A 50% 100%);border-color:#B82222;color:#fff;box-shadow:0 18px 34px -16px rgba(166,27,27,.9)}
+.ft.red span{color:var(--red)}
+.ft b.tick{animation:flip .4s cubic-bezier(.3,1.3,.5,1)}
+@keyframes flip{from{transform:rotateX(-70deg)}to{transform:none}}
+.sep{align-self:center;margin-top:-26px;font:700 clamp(22px,2.4vw,32px)/1 var(--f-display);color:var(--grey-2);font-style:normal}
+.cdx-bar{display:grid;gap:10px}
+.bar{height:8px;border-radius:9px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#7A1313,var(--red));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bar-l{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:500 11.5px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--grey-2)}
+.bar-l b{color:var(--fg);font-weight:500}
+.cdx-foot{display:flex;align-items:center;gap:12px;padding-top:clamp(16px,2vw,22px);border-top:1px solid var(--line);font:500 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--grey-2)}
+.cdx-foot img{height:20px;width:auto}
+.cdx .cd-closed{margin:0}
 /* floating cards around the mock */
 .float{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:14px;
   background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -617,9 +625,8 @@ footer .wrap{display:grid;gap:22px}
   .tl li.now .card::after{background:var(--red)}
 }
 @media (max-width:420px){
-  .pr:nth-child(2){margin-left:6%}
-  .pr:nth-child(3){margin-left:12%}
-  .pr:nth-child(4),.pfoot{margin-left:18%}
+  .sep{display:none}
+  .ft b{border-radius:12px}
   .hero-h{font-size:clamp(36px,11vw,46px)}
   .float.toast{left:0}
   .float.badge{right:0}
@@ -689,16 +696,20 @@ footer .wrap{display:grid;gap:22px}
       </div>
 
       <div class="mock" aria-hidden="true">
-        <div class="poster">
-          <span class="ptop">Applications close in</span>
-          <div class="pcount" id="countdown" role="timer" aria-live="off" aria-label="Time left to apply">
-            <div class="pr"><span class="pn" data-cd="d">--</span><span class="pl"><b>Days</b><small>Until applications close</small></span></div>
-            <div class="pr"><span class="pn" data-cd="h">--</span><span class="pl"><b>Hours</b></span></div>
-            <div class="pr"><span class="pn" data-cd="m">--</span><span class="pl"><b>Minutes</b></span></div>
-            <div class="pr on"><span class="pn" data-cd="s">--</span><span class="pl"><b>Seconds</b></span></div>
+        <div class="cdx">
+          <div class="cdx-top"><span>Applications close in</span><span class="live"><i></i>Live</span></div>
+          <div class="cdx-row" id="countdown" role="timer" aria-live="off" aria-label="Time left to apply">
+            <div class="ft"><b data-cd="d">--</b><span>Days</span></div><i class="sep">:</i>
+            <div class="ft"><b data-cd="h">--</b><span>Hours</span></div><i class="sep">:</i>
+            <div class="ft"><b data-cd="m">--</b><span>Min</span></div><i class="sep">:</i>
+            <div class="ft red"><b data-cd="s">--</b><span>Sec</span></div>
           </div>
           <p class="cd-closed" id="cd-closed" hidden>Applications are now closed.</p>
-          <div class="pfoot"><img src="assets/htu-wordmark.png" alt="HTU"><span>Deadline · <b data-deadline>[DATE]</b></span></div>
+          <div class="cdx-bar">
+            <div class="bar"><i id="win-fill"></i></div>
+            <div class="bar-l"><span>Opened <b id="win-open">TBA</b></span><span>Closes <b data-deadline>[DATE]</b></span></div>
+          </div>
+          <div class="cdx-foot"><img src="assets/htu-wordmark.png" alt="HTU"><span>Beyond E. Hackathon · D.Learn Center</span></div>
         </div>
       </div>
     </div>
@@ -1003,6 +1014,15 @@ const CONFIG = {
     try{ localStorage.setItem("be-theme", root.dataset.theme || "dark"); }catch(e){}
     setLabel();
   });
+
+  // Application window progress bar
+  const openD = parse(CONFIG.timeline[0] && CONFIG.timeline[0].date);
+  const winOpen = document.getElementById("win-open"), winFill = document.getElementById("win-fill");
+  if(winOpen) winOpen.textContent = openD ? fmt(openD) : "TBA";
+  if(winFill && openD && deadline){
+    const f = Math.min(1, Math.max(0, (Date.now() - openD) / (deadline - openD)));
+    requestAnimationFrame(() => winFill.style.width = Math.max(f * 100, 2) + "%");
+  }
 
   // Countdown
   const cd = { d: $$('[data-cd="d"]'), h: $$('[data-cd="h"]'), m: $$('[data-cd="m"]'), s: $$('[data-cd="s"]') };
