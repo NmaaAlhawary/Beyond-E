@@ -213,6 +213,14 @@ a{color:inherit}
 .face b{font:700 clamp(20px,2.2vw,30px)/1 var(--f-mono);letter-spacing:-.02em}
 .face small{font:500 11px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
 .face i{position:absolute;top:14px;right:14px;width:8px;height:8px;border-radius:50%;background:var(--red)}
+.face .lt{
+  position:absolute;inset:0;display:grid;place-items:center;padding-bottom:.06em;
+  font:900 calc(var(--s) * .8)/1 var(--f-display);font-stretch:74%;
+  color:transparent;-webkit-text-stroke:2px var(--red);
+  background:linear-gradient(0deg,rgba(166,27,27,.5),rgba(166,27,27,0) 85%);-webkit-background-clip:text;background-clip:text;
+}
+.face{align-content:end}
+.face small{position:relative}
 .f-front{transform:translateZ(var(--h))}
 .f-back{transform:rotateY(180deg) translateZ(var(--h))}
 .f-right{transform:rotateY(90deg) translateZ(var(--h))}
@@ -609,12 +617,12 @@ footer .wrap{display:grid;gap:22px}
           <div class="mini m3"><span></span><span></span><span></span><span></span><span></span><span></span></div>
           <div class="tilt" id="tilt"><div class="floaty">
             <div class="cube">
-              <div class="face f-front you"><small>Your plugin</small><code><span id="typed">local_yourteam</span><span class="caret"></span></code><small>v1.0 · 3 days</small></div>
-              <div class="face f-right"><i></i><b>block_</b><small>Dashboard widgets</small></div>
-              <div class="face f-back"><i></i><b>mod_</b><small>New activities</small></div>
-              <div class="face f-left"><i></i><b>report_</b><small>Insights</small></div>
-              <div class="face f-top"><i></i><b>theme_</b><small>New looks</small></div>
-              <div class="face f-bottom"><i></i><b>qtype_</b><small>Question types</small></div>
+              <div class="face f-front"><span class="lt">M</span><small>mod_</small></div>
+              <div class="face f-left"><span class="lt">O</span><small>block_</small></div>
+              <div class="face f-back"><span class="lt">O</span><small>local_</small></div>
+              <div class="face f-right"><span class="lt">D</span><small>report_</small></div>
+              <div class="face f-top"><span class="lt">L</span><small>theme_</small></div>
+              <div class="face f-bottom"><span class="lt">E</span><small>qtype_</small></div>
             </div>
           </div></div>
         </div>
@@ -913,21 +921,15 @@ const CONFIG = {
   else { addEventListener("scroll", stepProgress, { passive: true }); addEventListener("resize", stepProgress); stepProgress(); }
 
   // Hero mock: types example plugin names into the empty slot
-  const typed = document.getElementById("typed"), toast = document.getElementById("toast"), toastName = document.getElementById("toast-name");
+  const toast = document.getElementById("toast"), toastName = document.getElementById("toast-name");
   const names = ["local_yourteam", "block_deadline_radar", "mod_peer_review", "report_attendance_insights", "qtype_code_runner"];
   if(!reduce){
-    let n = 0, c = names[0].length, del = true;
-    (function loop(){
-      const w = names[n];
-      if(del){ c--; typed.textContent = w.slice(0, c); if(c === 0){ del = false; n = (n + 1) % names.length; } setTimeout(loop, 35); return; }
-      c++; typed.textContent = names[n].slice(0, c);
-      if(c === names[n].length){
-        toastName.textContent = names[n] + " · v1.0";
-        toast.classList.remove("pop"); void toast.offsetWidth; toast.classList.add("pop");
-        del = true; setTimeout(loop, 2600); return;
-      }
-      setTimeout(loop, 65 + Math.random() * 50);
-    })();
+    let n = 0;
+    setInterval(() => {
+      n = (n + 1) % names.length;
+      toastName.textContent = names[n] + " · v1.0";
+      toast.classList.remove("pop"); void toast.offsetWidth; toast.classList.add("pop");
+    }, 2800);
   }
 
   // Cube follows the pointer a little
