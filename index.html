@@ -23,7 +23,7 @@
 
 <style>
 /* Layout: full-bleed alternating panels. Dark charcoal panels (hero, timeline, criteria, final call)
-   and light stone panels (about, submit, why, FAQ), stacked edge to edge with no gaps.
+   and light stone panels (about, submit, FAQ), stacked edge to edge with no gaps.
    Red stays the only accent: buttons, highlights, the event name. */
 :root{
   --page:#0E0D0D;       /* the gap between panels */
@@ -420,39 +420,6 @@ a{color:inherit}
 .c-card:hover .c-ic{background:var(--red);border-color:var(--red)}
 .c-card h3{font:700 clamp(17px,1.6vw,19px)/1.2 var(--f-display);font-stretch:92%;margin:0;text-wrap:balance}
 
-/* ---------- 7. why (light, bento) ---------- */
-.why{display:grid;gap:14px}
-.w-card{
-  padding:clamp(24px,3vw,32px);border-radius:var(--r-card);border:1px solid var(--s-line);background:var(--s-card);
-  display:grid;gap:14px;align-content:start;min-height:0;position:relative;overflow:hidden;
-  box-shadow:0 18px 40px -32px var(--shadow);transition:transform .3s,border-color .3s;
-}
-.w-card:hover{transform:translateY(-4px);border-color:rgba(219,49,65,.45)}
-.w-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.w-card .n{font:500 12px/1 var(--f-mono);letter-spacing:.16em;color:var(--s-muted);text-transform:uppercase}
-.w-ic{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--stone);color:var(--red);transition:background .3s,color .3s}
-.w-ic svg{width:24px;height:24px}
-.w-card:hover .w-ic{background:var(--red);color:#fff}
-.w-body{display:grid;gap:10px}
-.w-head,.w-body{position:relative;z-index:1}
-.w-card.feature .big{
-  position:absolute;top:-.1em;right:.03em;z-index:0;pointer-events:none;
-  font:900 clamp(210px,17vw,270px)/1 var(--f-display);font-stretch:72%;
-  color:transparent;-webkit-text-stroke:2px var(--red);
-  background:linear-gradient(180deg,rgba(219,49,65,.45),rgba(219,49,65,0) 85%);-webkit-background-clip:text;background-clip:text;
-  transition:transform .5s cubic-bezier(.2,.8,.2,1);
-}
-.w-card.feature:hover .big{transform:translateY(8px) rotate(-3deg)}
-.w-card.feature .w-ic{display:none}
-.w-card.feature{align-content:end;gap:14px}
-.w-card h3{font:800 clamp(22px,2.2vw,28px)/1.02 var(--f-display);font-stretch:80%;text-transform:uppercase;margin:0;letter-spacing:-.01em;text-wrap:balance}
-.w-card p{margin:0;color:var(--s-muted);max-width:44ch}
-.w-card.feature{background:var(--ink);border-color:var(--ink);color:#F4F1EF}
-.w-card.feature .n,.w-card.feature p{color:#A39B9A}
-.w-card.feature h3{font-size:clamp(28px,3vw,40px)}
-.w-card.feature .w-ic{background:var(--red);color:#fff}
-.w-card.prize{background:var(--red);border-color:var(--red);color:#fff}
-.w-card.prize p,.w-card.prize .n{color:rgba(255,255,255,.85)}
 
 /* ---------- 8. FAQ (dark) ---------- */
 .faq-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
@@ -549,8 +516,6 @@ a{color:inherit}
 /* ---------- breakpoints (mobile first) ---------- */
 @media (min-width:640px){
   .glance{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .why{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .why .prize{grid-column:1/-1;min-height:0}
 }
 @media (min-width:900px){
   .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center}
@@ -563,9 +528,6 @@ a{color:inherit}
   .side{position:sticky;top:110px}
   .faq-grid{grid-template-columns:minmax(0,.38fr) minmax(0,.62fr)}
   .sec-head.split{grid-template-columns:minmax(0,1fr) minmax(0,.7fr);gap:40px}
-  .why{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr)}
-  .why .feature{grid-row:span 2}
-  .why .w-card:nth-child(4){grid-column:2/4}
   .dock{display:none}
 }
 /* zig-zag horizontal timeline on wide screens: cards alternate above / below the line */
@@ -674,10 +636,10 @@ a{color:inherit}
 
       <div class="glance" id="glance">
         <article class="g-card">
-          <div class="g-top"><span class="k">Team size</span>
-            <span class="g-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2.1.7 3.5 2.8 3.5 5.7"/></svg></span></div>
-          <span class="v"><b data-count="4">4</b><sup>max</sup></span>
-          <p>Per team, HTU students and faculty</p>
+          <div class="g-top"><span class="k">Who can join</span>
+            <span class="g-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span></div>
+          <span class="v"><b data-scramble>HTU</b></span>
+          <p>Students and faculty</p>
         </article>
         <article class="g-card">
           <div class="g-top"><span class="k">Selection</span>
@@ -695,7 +657,7 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- 4. HOW IT WORKS -->
+  <!-- 3. HOW IT WORKS -->
   <section class="panel" id="how">
     <div class="wrap">
       <div class="sec-head split">
@@ -708,7 +670,7 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- 5. WHAT YOU SUBMIT -->
+  <!-- 4. WHAT YOU SUBMIT -->
   <section class="panel light" id="submit">
     <div class="wrap submit-grid">
       <div class="side">
@@ -729,7 +691,7 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- 6. HOW TEAMS ARE CHOSEN -->
+  <!-- 5. HOW TEAMS ARE CHOSEN -->
   <section class="panel grid-bg" id="criteria">
     <div class="wrap">
       <div class="sec-head split">
@@ -750,24 +712,28 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- 7. WHY JOIN -->
-  <section class="panel light" id="why">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Why join</span>
-        <h2 class="h-sec">Why take <span class="hl">part</span></h2>
+  <!-- 6. FAQ -->
+  <section class="panel light" id="faq">
+    <div class="wrap faq-grid">
+      <div class="faq-aside">
+        <div class="sec-head" style="margin:0">
+          <span class="eyebrow">FAQ</span>
+          <h2 class="h-sec">Questions, <span class="hl">answered</span></h2>
+        </div>
+        <div class="contact"><span>Still unsure?</span><a data-email href="#">[CONTACT EMAIL]</a></div>
       </div>
-      <div class="why">
-        <article class="w-card feature"><span class="big" aria-hidden="true">M</span><div class="w-head"><span class="n">Real impact</span><span class="w-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span></div><div class="w-body"><h3>Change Moodle for the whole campus</h3><p>Your idea can improve Moodle for the whole university.</p></div></article>
-        <article class="w-card"><div class="w-head"><span class="n">Mentoring</span><span class="w-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M16 3.5l2-1.5M8 3.5 6 2"/></svg></span></div><div class="w-body"><h3>Build with guidance</h3><p>Guidance from the D.Learn Center team throughout the build.</p></div></article>
-        <article class="w-card"><div class="w-head"><span class="n">Recognition</span><span class="w-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span></div><div class="w-body"><h3>Take the townhall stage</h3><p>Be presented at the Beyond E. townhall in front of university leadership and employers.</p></div></article>
-        <article class="w-card"><div class="w-head"><span class="n">Portfolio</span><span class="w-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span></div><div class="w-body"><h3>Ship something real</h3><p>A real project you can show.</p></div></article>
-        <article class="w-card prize" id="prize-card" hidden><div class="w-head"><span class="n">Prizes</span><span class="w-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg></span></div><div class="w-body"><h3>What you can win</h3><p data-prizes></p></div></article>
+      <div class="faq">
+        <details open><summary>Who can apply?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Students and faculty of HTU.</p></div></details>
+        <details><summary>Do I need to know how to code?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No. Teams can include designers and idea owners. List your skills in the application.</p></div></details>
+        <details><summary>Can I apply alone?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Yes, or in a team of <span data-team-size>[3 to 4]</span>.</p></div></details>
+        <details><summary>Do I need Moodle plugin experience?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No, but you must clearly understand the problem you want to solve.</p></div></details>
+        <details><summary>What happens if my team is selected?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>You are invited to the orientation and to the Beyond E. townhall.</p></div></details>
+        <details><summary>Who do I contact?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Email us at <a data-email href="#">[CONTACT EMAIL]</a>.</p></div></details>
       </div>
     </div>
   </section>
 
-  <!-- 9. FINAL CTA -->
+  <!-- 7. FINAL CTA -->
   <section class="panel grid-bg final">
     <div class="wrap final-grid">
       <div class="final-copy">
@@ -814,34 +780,13 @@ a{color:inherit}
       </div>
     </div>
   </section>
-
-  <!-- 8. FAQ -->
-  <section class="panel light" id="faq">
-    <div class="wrap faq-grid">
-      <div class="faq-aside">
-        <div class="sec-head" style="margin:0">
-          <span class="eyebrow">FAQ</span>
-          <h2 class="h-sec">Questions, <span class="hl">answered</span></h2>
-        </div>
-        <div class="contact"><span>Still unsure?</span><a data-email href="#">[CONTACT EMAIL]</a></div>
-      </div>
-      <div class="faq">
-        <details open><summary>Who can apply?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Students and faculty of HTU.</p></div></details>
-        <details><summary>Do I need to know how to code?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No. Teams can include designers and idea owners. List your skills in the application.</p></div></details>
-        <details><summary>Can I apply alone?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Yes, or in a team of <span data-team-size>[3 to 4]</span>.</p></div></details>
-        <details><summary>Do I need Moodle plugin experience?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No, but you must clearly understand the problem you want to solve.</p></div></details>
-        <details><summary>What happens if my team is selected?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>You are invited to the orientation and to the Beyond E. townhall.</p></div></details>
-        <details><summary>Who do I contact?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Email us at <a data-email href="#">[CONTACT EMAIL]</a>.</p></div></details>
-      </div>
-    </div>
-  </section>
 </main>
 
 <div class="dock" id="dock"><a class="btn" data-apply href="#" target="_blank" rel="noopener">Apply on HTUx</a></div>
 
 <script>
 /* =====================================================================
-   EDIT EVERYTHING HERE — dates, deadline, email, link, team size, prizes.
+   EDIT EVERYTHING HERE — dates, deadline, email, link, team size.
    No other part of the page needs to change.
    Dates: "YYYY-MM-DD". Use null to show "TBA".
    ===================================================================== */
@@ -850,7 +795,6 @@ const CONFIG = {
   deadline:   "2026-11-15T23:59:00+03:00",         // countdown target (Amman time, UTC+3)
   email:      "",                                  // contact email, e.g. "name@htu.edu.jo"; empty shows [CONTACT EMAIL]
   teamSize:   "3 to 4",                            // shown in the FAQ
-  prizes:     null,                                // e.g. "1st place: JOD 1,000 · 2nd: JOD 500". null hides the card
 
   timeline: [
     { title: "Apply on HTUx",                  text: "Submit your idea with a prototype, wireframe or sketch.", date: "2026-10-25" },
@@ -882,10 +826,6 @@ const CONFIG = {
   $$("[data-deadline-short]").forEach(e => e.textContent = deadline ? fmt(deadline) : "TBA");
   $$("[data-deadline]").forEach(e => e.textContent = deadline ? fmt(deadline,{month:"long",day:"numeric",year:"numeric"}) : "TBA");
 
-  if(CONFIG.prizes){
-    document.getElementById("prize-card").hidden = false;
-    document.querySelector("[data-prizes]").textContent = CONFIG.prizes;
-  }
   // Timeline: event-style cards, past steps dimmed, next step highlighted
   const today = new Date(); today.setHours(0,0,0,0);
   const ol = document.getElementById("timeline");
@@ -920,19 +860,24 @@ const CONFIG = {
     io.observe(tlWrap);
   }
 
-  // At-a-glance cards rise in and their numbers count up
+  // At-a-glance cards rise in, numbers count up, HTU scrambles into place
   const glance = document.getElementById("glance");
   if("IntersectionObserver" in window && !reduce && glance.getBoundingClientRect().top > innerHeight * .85){
-    const nums = [...glance.querySelectorAll("[data-count]")];
+    const nums = [...glance.querySelectorAll("[data-count]")], word = glance.querySelector("[data-scramble]");
     nums.forEach(el => { el.style.minWidth = el.offsetWidth + "px"; el.textContent = "0"; });
+    word.style.minWidth = word.offsetWidth + "px";
+    word.style.opacity = 0;
     glance.classList.add("armed");
     const ease = t => 1 - Math.pow(1 - t, 3);
     const run = () => {
-      const t0 = performance.now(), dur = 1400;
+      const t0 = performance.now(), dur = 1400, final = word.textContent, abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      word.style.opacity = "";
       const tick = now => {
         const t = Math.min(1, (now - t0) / dur);
         nums.forEach(el => el.textContent = Math.round(ease(t) * +el.dataset.count));
-        if(t < 1) requestAnimationFrame(tick);
+        const locked = Math.floor(t * (final.length + 1));
+        word.textContent = [...final].map((c, i) => i < locked ? c : abc[Math.random() * 26 | 0]).join("");
+        if(t < 1) requestAnimationFrame(tick); else word.textContent = final;
       };
       requestAnimationFrame(tick);
     };
