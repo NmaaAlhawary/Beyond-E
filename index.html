@@ -17,7 +17,6 @@
 <meta name="twitter:description" content="A 3-day Moodle hackathon for HTU students and faculty. Apply now.">
 <meta name="twitter:image" content="assets/poster.jpg">
 
-<script>try{if(localStorage.getItem("be-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@500;600;700&display=swap">
@@ -55,7 +54,7 @@
   --inset:clamp(8px,1.4vw,18px);
   --gutter:clamp(16px,4vw,48px);
   --maxw:1360px;
-  --r-panel:clamp(22px,3vw,36px);
+  --r-panel:0;
   --r-card:18px;
   color-scheme:dark;
 }
@@ -91,6 +90,7 @@ a{color:inherit}
   --s-card:var(--stone-card);--s-line:var(--stone-line);
   color-scheme:light;
 }
+main{padding-bottom:var(--inset)}
 .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);position:relative}
 
 /* ---------- type ---------- */
@@ -130,36 +130,9 @@ a{color:inherit}
 .fine{font:400 14px/1.4 var(--f-mono);color:var(--s-muted);margin:0}
 .fine b{color:var(--s-fg);font-weight:500}
 
-/* ---------- header ---------- */
-.top{
-  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
-  padding-top:calc(var(--inset) + 8px);
-}
-.top .wrap{padding-inline:calc(var(--gutter) + var(--inset) - 12px)}
-.top-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  min-height:62px;padding:0 10px 0 18px;border-radius:999px;
-  background:var(--glass);border:1px solid var(--line);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg);font:700 16px/1 var(--f-display);font-stretch:90%}
-.logo img{height:26px;width:auto;display:block}
-.logo-mark{width:32px;height:32px;border-radius:9px;background:var(--fg);color:var(--char);display:grid;place-items:center;font:800 15px/1 var(--f-display);font-stretch:75%}
-.logo small{display:block;font:500 10px/1 var(--f-mono);letter-spacing:.14em;color:var(--grey);margin-top:4px;text-transform:uppercase}
-.top .logo{display:none}
-.nav{display:none;gap:4px}
-.top-actions{display:flex;align-items:center;gap:8px}
-.theme-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--char);color:var(--fg);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,transform .3s}
-.theme-btn:hover{border-color:var(--red);transform:rotate(20deg)}
-.theme-btn svg{width:18px;height:18px}
-.theme-btn .sun{display:none}
-:root[data-theme="light"] .theme-btn .sun{display:block}
-:root[data-theme="light"] .theme-btn .moon{display:none}
-.nav a{font:500 14px/1 var(--f-body);color:var(--grey);text-decoration:none;padding:10px 14px;border-radius:999px;transition:color .2s,background .2s}
-.nav a:hover{color:var(--fg);background:var(--char-2)}
 
 /* ---------- 1. hero ---------- */
-.hero{margin-top:calc(-70px - var(--inset));padding-top:calc(70px + var(--inset) + clamp(40px,6vw,72px));padding-bottom:clamp(56px,7vw,96px);
+.hero{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px);
   min-height:min(calc(100svh - var(--inset)),1040px);display:flex;flex-direction:column}
 .hero>.wrap{width:100%;flex:1;align-content:center}
 .hero::after{ /* red glow behind the course mock */
@@ -351,12 +324,6 @@ a{color:inherit}
 @keyframes fbob{50%{transform:translateY(-8px)}}
 
 /* ---------- 2 + 3. about + glance (light) ---------- */
-.about{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-bottom:clamp(44px,6vw,72px)}
-.about-text{
-  font-family:var(--f-display);font-weight:600;font-stretch:90%;
-  font-size:clamp(22px,2.8vw,38px);line-height:1.22;letter-spacing:-.018em;margin:0;max-width:none;text-wrap:pretty;
-}
-.about-text em{font-style:normal;color:var(--red)}
 .glance{display:grid;gap:14px}
 .g-card{
   background:var(--s-card);border:1px solid var(--s-line);border-radius:var(--r-card);
@@ -553,15 +520,6 @@ a{color:inherit}
 .t-code small{font:500 11px/1 var(--f-mono);letter-spacing:.14em;color:var(--t-muted)}
 @keyframes sweep{55%,100%{transform:translateX(70%)}}
 
-/* ---------- 10. footer ---------- */
-footer{padding:clamp(36px,5vw,52px) 0 calc(36px + env(safe-area-inset-bottom,0px))}
-footer .wrap{display:grid;gap:22px}
-.f-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px}
-.f-meta{display:flex;flex-wrap:wrap;gap:8px 24px;font:400 14px/1.5 var(--f-mono);color:var(--grey)}
-.f-meta a{color:var(--fg);text-underline-offset:3px}
-.series{font:500 13px/1.4 var(--f-mono);letter-spacing:.08em;color:var(--grey-2);text-transform:uppercase;margin:0}
-.series b{color:var(--fg);font-weight:700}
-
 /* ---------- mobile apply dock ---------- */
 .dock{
   position:fixed;left:0;right:0;bottom:0;z-index:30;
@@ -579,7 +537,6 @@ footer .wrap{display:grid;gap:22px}
   .why .prize{grid-column:1/-1;min-height:0}
 }
 @media (min-width:900px){
-  .nav{display:flex}
   .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center}
   .mock{padding-top:0}
   .hero-h{font-size:clamp(46px,5.2vw,78px);line-height:.92}
@@ -635,7 +592,6 @@ footer .wrap{display:grid;gap:22px}
   .cd{min-width:0;flex:1}
   .cd-sep{display:none}
   .cd b{font-size:24px}
-  .logo small{display:none}
 }
 
 /* ---------- motion ---------- */
@@ -654,28 +610,6 @@ footer .wrap{display:grid;gap:22px}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="wrap"><div class="top-bar">
-    <a class="logo" href="#top" aria-label="D.Learn Center, HTU" data-logo>
-      <span class="logo-mark" aria-hidden="true">D.</span>
-      <span>D.Learn Center<small>HTU</small></span>
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#how">How it works</a>
-      <a href="#submit">What to submit</a>
-      <a href="#criteria">Selection</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="top-actions">
-      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to white theme">
-        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
-      <a class="btn btn-sm" data-apply href="#" target="_blank" rel="noopener">Apply on HTUx</a>
-    </div>
-  </div></div>
-</header>
 
 <main id="top">
 
@@ -715,15 +649,12 @@ footer .wrap{display:grid;gap:22px}
     </div>
   </section>
 
-  <!-- 2 + 3. WHAT IS THIS / AT A GLANCE -->
+  <!-- 2. AT A GLANCE -->
   <section class="panel light" id="about">
     <div class="wrap">
-      <div class="about">
-        <span class="eyebrow">What is this?</span>
-        <p class="about-text">
-          Teams of HTU students and faculty design and build a useful feature or plugin for Moodle.
-          <em>Ten teams</em> are selected, supported by mentors, and recognized at the <em>Beyond E. townhall</em>.
-        </p>
+      <div class="sec-head">
+        <span class="eyebrow">At a glance</span>
+        <h2 class="h-sec">The hackathon in <span class="hl">numbers</span></h2>
       </div>
 
       <div class="glance">
@@ -878,24 +809,6 @@ footer .wrap{display:grid;gap:22px}
   </section>
 </main>
 
-<!-- 10. FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="f-row">
-      <a class="logo" href="#top" aria-label="D.Learn Center, HTU" data-logo>
-        <span class="logo-mark" aria-hidden="true">D.</span>
-        <span>D.Learn Center<small>HTU</small></span>
-      </a>
-      <p class="series">Part of the <b>Beyond E.</b> townhall series</p>
-    </div>
-    <div class="f-meta">
-      <span>Al Hussein Technical University</span>
-      <a data-email href="#">[CONTACT EMAIL]</a>
-      <span>© <span id="yr">2026</span></span>
-    </div>
-  </div>
-</footer>
-
 <div class="dock" id="dock"><a class="btn" data-apply href="#" target="_blank" rel="noopener">Apply on HTUx</a></div>
 
 <script>
@@ -910,7 +823,6 @@ const CONFIG = {
   email:      "",                                  // contact email, e.g. "name@htu.edu.jo"; empty shows [CONTACT EMAIL]
   teamSize:   "3 to 4",                            // shown in the FAQ
   prizes:     null,                                // e.g. "1st place: JOD 1,000 · 2nd: JOD 500". null hides the card
-  logo:       "assets/dlearn-logo.png",            // D.Learn Center logo; empty shows the text logo
 
   timeline: [
     { title: "Apply on HTUx",                  text: "Submit your idea with a prototype, wireframe or sketch.", date: "2026-10-25" },
@@ -941,19 +853,11 @@ const CONFIG = {
   const deadline = CONFIG.deadline ? new Date(CONFIG.deadline) : null;
   $$("[data-deadline-short]").forEach(e => e.textContent = deadline ? fmt(deadline) : "TBA");
   $$("[data-deadline]").forEach(e => e.textContent = deadline ? fmt(deadline,{month:"long",day:"numeric",year:"numeric"}) : "TBA");
-  document.getElementById("yr").textContent = new Date().getFullYear();
 
   if(CONFIG.prizes){
     document.getElementById("prize-card").hidden = false;
     document.querySelector("[data-prizes]").textContent = CONFIG.prizes;
   }
-  if(CONFIG.logo){
-    $$("[data-logo]").forEach(a => {
-      const img = new Image(); img.src = CONFIG.logo; img.alt = "D.Learn Center";
-      img.onload = () => { a.replaceChildren(img); };
-    });
-  }
-
   // Timeline: event-style cards, past steps dimmed, next step highlighted
   const today = new Date(); today.setHours(0,0,0,0);
   const ol = document.getElementById("timeline");
@@ -1004,16 +908,6 @@ const CONFIG = {
   else { addEventListener("scroll", stepProgress, { passive: true }); addEventListener("resize", stepProgress); stepProgress(); }
 
 
-
-  // White / dark theme toggle
-  const root = document.documentElement, tbtn = document.getElementById("theme-btn");
-  const setLabel = () => tbtn.setAttribute("aria-label", root.dataset.theme === "light" ? "Switch to dark theme" : "Switch to white theme");
-  setLabel();
-  tbtn.addEventListener("click", () => {
-    if(root.dataset.theme === "light") root.removeAttribute("data-theme"); else root.dataset.theme = "light";
-    try{ localStorage.setItem("be-theme", root.dataset.theme || "dark"); }catch(e){}
-    setLabel();
-  });
 
   // Application window progress bar
   const openD = parse(CONFIG.timeline[0] && CONFIG.timeline[0].date);
