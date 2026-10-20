@@ -319,29 +319,6 @@ a{color:inherit}
 @keyframes pop{from{scale:.85}to{scale:1}}
 @keyframes fbob{50%{transform:translateY(-8px)}}
 
-/* ---------- 2 + 3. about + glance (light) ---------- */
-.glance{display:grid;gap:14px}
-.g-card{
-  background:var(--s-card);border:1px solid var(--s-line);border-radius:var(--r-card);
-  padding:26px;display:grid;grid-template-rows:auto 1fr auto;gap:22px;min-height:230px;
-  box-shadow:0 18px 40px -30px var(--shadow);
-  transition:transform .25s;
-}
-.g-card:hover{transform:translateY(-4px)}
-.g-top{display:flex;justify-content:space-between;align-items:center}
-.g-card .k{font:500 12px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--s-muted)}
-.g-ic{width:40px;height:40px;border-radius:11px;background:var(--stone);display:grid;place-items:center;color:var(--red)}
-.g-ic svg{width:20px;height:20px}
-.g-card .v{align-self:end;font:850 clamp(50px,5.6vw,68px)/.85 var(--f-display);font-stretch:72%;letter-spacing:-.025em}
-.g-card .v sup{font-size:.3em;vertical-align:top;margin-left:6px;color:var(--red);font-weight:700;letter-spacing:.02em;font-stretch:90%}
-.g-card p{margin:0;color:var(--s-muted);font-size:16px;padding-top:16px;border-top:1px solid var(--s-line)}
-.g-card .v{justify-self:center;text-align:center;padding-block:6px}
-.g-card .v b{font:inherit;display:inline-block;font-variant-numeric:tabular-nums}
-.glance.armed .g-card{opacity:0;transform:translateY(24px)}
-.glance.play .g-card{transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
-.glance.play .g-card:nth-child(2){transition-delay:.12s}
-.glance.play .g-card:nth-child(3){transition-delay:.24s}
-
 /* ---------- 4. timeline (dark): event schedule with a line that draws in ---------- */
 .tl-wrap{position:relative;--fill:1}
 .tl-rail,.tl-fill{position:absolute;left:25.5px;top:26px;bottom:26px;width:2px;border-radius:2px}
@@ -514,9 +491,6 @@ a{color:inherit}
 .dock .btn{width:100%}
 
 /* ---------- breakpoints (mobile first) ---------- */
-@media (min-width:640px){
-  .glance{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
 @media (min-width:900px){
   .hero-grid{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center}
   .mock{padding-top:0}
@@ -626,51 +600,7 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- 2. AT A GLANCE -->
-  <section class="panel light" id="about">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">At a glance</span>
-        <h2 class="h-sec">The hackathon in <span class="hl">numbers</span></h2>
-      </div>
-
-      <div class="glance" id="glance">
-        <article class="g-card">
-          <div class="g-top"><span class="k">Who can join</span>
-            <span class="g-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 4 2 9l10 5 10-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span></div>
-          <span class="v"><b data-scramble>HTU</b></span>
-          <p>Students and faculty</p>
-        </article>
-        <article class="g-card">
-          <div class="g-top"><span class="k">Selection</span>
-            <span class="g-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg></span></div>
-          <span class="v"><b data-count="10">10</b><sup>teams</sup></span>
-          <p>Chosen from all applications</p>
-        </article>
-        <article class="g-card">
-          <div class="g-top"><span class="k">Duration</span>
-            <span class="g-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span></div>
-          <span class="v"><b data-count="3">3</b><sup>days</sup></span>
-          <p>Of building, with mentor support</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. HOW IT WORKS -->
-  <section class="panel" id="how">
-    <div class="wrap">
-      <div class="sec-head split">
-        <div style="display:grid;gap:18px">
-          <span class="eyebrow">How it works</span>
-          <h2 class="h-sec">From idea to <span class="hl">townhall</span></h2>
-        </div>
-      </div>
-      <div class="tl-wrap" id="tl-wrap"><span class="tl-rail" aria-hidden="true"></span><span class="tl-fill" aria-hidden="true"></span><ol class="tl" id="timeline"></ol></div>
-    </div>
-  </section>
-
-  <!-- 4. WHAT YOU SUBMIT -->
+  <!-- 3. WHAT YOU SUBMIT -->
   <section class="panel light" id="submit">
     <div class="wrap submit-grid">
       <div class="side">
@@ -688,6 +618,19 @@ a{color:inherit}
           <li><span class="node">04</span><div class="s-card"><span class="s-tag">Who</span><h3>Your team</h3><p>Names and the skills each person brings.</p></div></li>
           <li><span class="node">05</span><div class="s-card"><span class="s-tag">Proof</span><h3>Something you built</h3><p>Something you built that nobody asked you to build.</p></div></li>
       </ol>
+    </div>
+  </section>
+
+  <!-- 4. HOW IT WORKS -->
+  <section class="panel" id="how">
+    <div class="wrap">
+      <div class="sec-head split">
+        <div style="display:grid;gap:18px">
+          <span class="eyebrow">How it works</span>
+          <h2 class="h-sec">From idea to <span class="hl">townhall</span></h2>
+        </div>
+      </div>
+      <div class="tl-wrap" id="tl-wrap"><span class="tl-rail" aria-hidden="true"></span><span class="tl-fill" aria-hidden="true"></span><ol class="tl" id="timeline"></ol></div>
     </div>
   </section>
 
@@ -858,36 +801,6 @@ const CONFIG = {
       requestAnimationFrame(() => { tlWrap.classList.add("play"); tlWrap.classList.remove("armed"); });
     }, { threshold: .25 });
     io.observe(tlWrap);
-  }
-
-  // At-a-glance cards rise in, numbers count up, HTU scrambles into place
-  const glance = document.getElementById("glance");
-  if("IntersectionObserver" in window && !reduce && glance.getBoundingClientRect().top > innerHeight * .85){
-    const nums = [...glance.querySelectorAll("[data-count]")], word = glance.querySelector("[data-scramble]");
-    nums.forEach(el => { el.style.minWidth = el.offsetWidth + "px"; el.textContent = "0"; });
-    word.style.minWidth = word.offsetWidth + "px";
-    word.style.opacity = 0;
-    glance.classList.add("armed");
-    const ease = t => 1 - Math.pow(1 - t, 3);
-    const run = () => {
-      const t0 = performance.now(), dur = 1400, final = word.textContent, abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      word.style.opacity = "";
-      const tick = now => {
-        const t = Math.min(1, (now - t0) / dur);
-        nums.forEach(el => el.textContent = Math.round(ease(t) * +el.dataset.count));
-        const locked = Math.floor(t * (final.length + 1));
-        word.textContent = [...final].map((c, i) => i < locked ? c : abc[Math.random() * 26 | 0]).join("");
-        if(t < 1) requestAnimationFrame(tick); else word.textContent = final;
-      };
-      requestAnimationFrame(tick);
-    };
-    const gio = new IntersectionObserver(e => {
-      if(!e[0].isIntersecting) return;
-      gio.disconnect();
-      glance.classList.add("play");
-      requestAnimationFrame(() => { glance.classList.remove("armed"); setTimeout(run, 150); setTimeout(() => glance.classList.remove("play"), 1100); });
-    }, { threshold: .35 });
-    gio.observe(glance);
   }
 
   // Application steps: red line follows your scroll and lights each step as it passes
